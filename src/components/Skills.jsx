@@ -1,5 +1,17 @@
 import React from "react";
-import { FaReact, FaServer, FaTools } from "react-icons/fa";
+import {
+  FaReact,
+  FaServer,
+  FaTools,
+  FaUsers,
+  FaComments,
+  FaClock,
+  FaExchangeAlt,
+  FaRibbon,
+  FaBookOpen,
+  FaBrain,
+  FaPuzzlePiece,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 import "./Skills.css";
 
@@ -22,6 +34,21 @@ const Skills = ({ currentLanguage }) => {
           subtitle: "Development & Deployment",
         },
       },
+      softSkills: {
+        title: "Soft Skills",
+        subtitle:
+          "Beyond technical abilities, I bring these professional skills to every project and team.",
+        skills: [
+          { name: "Team Collaboration", icon: FaUsers },
+          { name: "Effective Communication", icon: FaComments },
+          { name: "Time Management", icon: FaClock },
+          { name: "Adaptability", icon: FaExchangeAlt },
+          { name: "Leadership & Mentoring", icon: FaRibbon },
+          { name: "Continuous Learning", icon: FaBookOpen },
+          { name: "Critical Thinking", icon: FaBrain },
+          { name: "Problem Solving", icon: FaPuzzlePiece },
+        ],
+      },
     },
     ar: {
       skills: {
@@ -39,6 +66,21 @@ const Skills = ({ currentLanguage }) => {
           title: "الأدوات و DevOps",
           subtitle: "التطوير والنشر",
         },
+      },
+      softSkills: {
+        title: "المهارات الناعمة",
+        subtitle:
+          "بالإضافة إلى القدرات التقنية، أجلب هذه المهارات المهنية إلى كل مشروع وفريق.",
+        skills: [
+          { name: "العمل الجماعي", icon: FaUsers },
+          { name: "التواصل الفعال", icon: FaComments },
+          { name: "إدارة الوقت", icon: FaClock },
+          { name: "المرونة", icon: FaExchangeAlt },
+          { name: "القيادة والإرشاد", icon: FaRibbon },
+          { name: "التعلم المستمر", icon: FaBookOpen },
+          { name: "التفكير النقدي", icon: FaBrain },
+          { name: "حل المشاكل", icon: FaPuzzlePiece },
+        ],
       },
     },
   };
@@ -211,6 +253,47 @@ const Skills = ({ currentLanguage }) => {
             </div>
           </motion.div>
         </motion.div>
+
+        {/* Soft Skills Section */}
+        <div className="soft-skills-section">
+          <div className="section-header">
+            <h2 className="section-title">
+              {t.softSkills.title.split(" ").map((word, index) => (
+                <span key={index}>
+                  {word}
+                  {index === 0 && <span className="title-underline"></span>}
+                </span>
+              ))}
+            </h2>
+            <p className="section-subtitle">{t.softSkills.subtitle}</p>
+          </div>
+
+          <motion.div
+            className="soft-skills-grid"
+            variants={gridVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {t.softSkills.skills.map((skill, index) => {
+              const IconComponent = skill.icon;
+              return (
+                <motion.div
+                  key={index}
+                  className="soft-skill-card"
+                  variants={cardVariants}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="soft-skill-icon">
+                    <IconComponent />
+                  </div>
+                  <h3 className="soft-skill-name">{skill.name}</h3>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

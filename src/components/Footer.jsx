@@ -1,16 +1,5 @@
 import React from "react";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaPhoneAlt,
-  FaPaperPlane,
-  FaHome,
-  FaUser,
-  FaProjectDiagram,
-  FaTools,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import "./Footer.css";
 
@@ -62,21 +51,62 @@ const Footer = ({ currentLanguage }) => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="footer-main">
+          {/* Main Footer Grid */}
+          <div className="footer-grid">
+            {/* Brand Section */}
             <motion.div
-              className="footer-brand"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
+              className="footer-brand-section"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
             >
-              <span className="footer-logo">Y•M</span>
-              <div className="footer-info">
-                <span className="footer-name">Youssef Mahmoud</span>
-                <p className="footer-tagline">Fullstack .NET React Developer</p>
-              </div>
+              <h3 className="brand-name gradient-text">
+                {[
+                  "Y",
+                  "o",
+                  "u",
+                  "s",
+                  "s",
+                  "e",
+                  "f",
+                  " ",
+                  "M",
+                  "a",
+                  "h",
+                  "m",
+                  "o",
+                  "u",
+                  "d",
+                ].map((letter, index) => (
+                  <motion.span
+                    key={index}
+                    className={`animated-letter ${
+                      letter === " " ? "space-letter" : ""
+                    }`}
+                    initial={{ opacity: 0, y: 20, rotateX: -90 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.1,
+                      ease: "easeOut",
+                    }}
+                    whileHover={{
+                      scale: 1.2,
+                      textShadow: "0 0 15px currentColor",
+                    }}
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
+              </h3>
+              <p className="brand-description">
+                Youssef Mahmoud — Full-Stack .NET & React Developer | Crafting
+                scalable apps with modern tech.
+              </p>
             </motion.div>
-          </div>
 
-          <div className="footer-links">
+            {/* Quick Links Section */}
             <motion.div
               className="footer-section"
               initial={{ opacity: 0, x: -20 }}
@@ -84,36 +114,27 @@ const Footer = ({ currentLanguage }) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4>{t.footer.quick_links}</h4>
-              <ul>
+              <h4 className="section-title">{t.footer.quick_links}</h4>
+              <ul className="footer-links-list">
                 <li>
-                  <a href="#hero">
-                    <FaHome className="icon" /> {t.footer.home}
-                  </a>
+                  <a href="#hero">{t.footer.home}</a>
                 </li>
                 <li>
-                  <a href="#about">
-                    <FaUser className="icon" /> {t.footer.about}
-                  </a>
+                  <a href="#about">{t.footer.about}</a>
                 </li>
                 <li>
-                  <a href="#projects">
-                    <FaProjectDiagram className="icon" /> {t.footer.projects}
-                  </a>
+                  <a href="#skills">{t.footer.skills}</a>
                 </li>
                 <li>
-                  <a href="#skills">
-                    <FaTools className="icon" /> {t.footer.skills}
-                  </a>
+                  <a href="#projects">{t.footer.projects}</a>
                 </li>
                 <li>
-                  <a href="#contact">
-                    <FaEnvelope className="icon" /> {t.footer.contact}
-                  </a>
+                  <a href="#contact">{t.footer.contact}</a>
                 </li>
               </ul>
             </motion.div>
 
+            {/* Connect Section */}
             <motion.div
               className="footer-section"
               initial={{ opacity: 0, x: 20 }}
@@ -121,45 +142,39 @@ const Footer = ({ currentLanguage }) => {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <h4>{t.footer.connect}</h4>
-              <ul className="contact-list">
-                <li>
-                  <FaPhoneAlt className="icon" />
-                  <a href="tel:+201149177542">01149177542</a>
-                </li>
-                <li>
-                  <FaEnvelope className="icon" />
-                  <a href="mailto:omaryosef136@gmail.com">
-                    omaryosef136@gmail.com
-                  </a>
-                </li>
-              </ul>
-              <div className="social-links">
+              <h4 className="section-title">{t.footer.connect}</h4>
+              <div className="social-icons">
                 <a
                   href="https://github.com/yossefmahmoud1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link"
+                  className="social-icon-link"
                   aria-label="GitHub"
                 >
-                  <FaGithub className="social-icon" /> GitHub
+                  <FaGithub />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/youssef-mahmoud-14b0022a4/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link"
+                  className="social-icon-link"
                   aria-label="LinkedIn"
                 >
-                  <FaLinkedin className="social-icon" /> LinkedIn
+                  <FaLinkedin />
+                </a>
+                <a
+                  href="mailto:omaryosef136@gmail.com"
+                  className="social-icon-link"
+                  aria-label="Email"
+                >
+                  <FaEnvelope />
                 </a>
               </div>
             </motion.div>
-
-            {/* Newsletter removed as requested */}
           </div>
         </motion.div>
 
+        {/* Footer Bottom */}
         <motion.div
           className="footer-bottom"
           initial={{ opacity: 0 }}
@@ -167,8 +182,10 @@ const Footer = ({ currentLanguage }) => {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <p>&copy; 2025 Youssef Mahmoud. {t.footer.rights}</p>
-          <p className="made-with">{t.footer.made_with}</p>
+          <div className="footer-bottom-content">
+            <p className="copyright">&copy; 2025 Youssef. {t.footer.rights}</p>
+            <p className="built-with">Built with React & Tailwind CSS</p>
+          </div>
         </motion.div>
       </div>
     </footer>
