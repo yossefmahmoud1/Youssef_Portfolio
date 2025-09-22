@@ -1,0 +1,235 @@
+/* Skills Section */
+.skills {
+  padding: var(--space-20) 0;
+  background: var(--bg-secondary);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.skill-category {
+  background: var(--bg-primary);
+  padding: var(--space-6);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 6px var(--shadow);
+  border: 1px solid var(--border);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-category:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px var(--shadow-hover);
+}
+
+/* subtle gradient border effect */
+.skill-category::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(37, 99, 235, 0.12) 30%,
+    transparent 60%
+  );
+  opacity: 0.6;
+}
+
+.category-header {
+  text-align: center;
+  margin-bottom: var(--space-5);
+}
+
+.category-icon {
+  font-size: 36px;
+  margin-bottom: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  color: var(--primary);
+}
+
+.category-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--text-primary);
+}
+
+.category-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.skill-tag {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  border: 1px solid transparent;
+  text-align: center;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  filter: saturate(1.05);
+}
+
+/* Frontend Skills */
+.frontend-tag {
+  background: linear-gradient(
+    135deg,
+    rgba(97, 218, 251, 0.15) 0%,
+    rgba(33, 161, 196, 0.15) 100%
+  );
+  color: var(--text-primary);
+  border-color: rgba(97, 218, 251, 0.35);
+}
+
+.frontend-tag:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(33, 161, 196, 0.22) 0%,
+    rgba(97, 218, 251, 0.22) 100%
+  );
+  box-shadow: 0 6px 14px rgba(97, 218, 251, 0.28);
+}
+
+/* Backend Skills */
+.backend-tag {
+  background: linear-gradient(
+    135deg,
+    rgba(81, 43, 212, 0.15) 0%,
+    rgba(124, 58, 237, 0.15) 100%
+  );
+  color: var(--text-primary);
+  border-color: rgba(81, 43, 212, 0.35);
+}
+
+.backend-tag:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.22) 0%,
+    rgba(81, 43, 212, 0.22) 100%
+  );
+  box-shadow: 0 6px 14px rgba(81, 43, 212, 0.28);
+}
+
+/* Tools Skills */
+.tools-tag {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.15) 0%,
+    rgba(217, 119, 6, 0.15) 100%
+  );
+  color: var(--text-primary);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.tools-tag:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(217, 119, 6, 0.22) 0%,
+    rgba(245, 158, 11, 0.22) 100%
+  );
+  box-shadow: 0 6px 14px rgba(245, 158, 11, 0.28);
+}
+
+/* Category-specific styling */
+.skill-category.frontend {
+  border-top: 3px solid rgba(97, 218, 251, 0.7);
+}
+
+.skill-category.backend {
+  border-top: 3px solid rgba(81, 43, 212, 0.7);
+}
+
+.skill-category.tools {
+  border-top: 3px solid rgba(245, 158, 11, 0.7);
+}
+
+/* per-category show more */
+.skills-more {
+  margin-top: var(--space-3);
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--border-radius);
+  padding: 6px 10px;
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+}
+.skills-more:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  .skills {
+    padding: var(--space-14) 0;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .skill-category {
+    padding: var(--space-5);
+  }
+
+  .skills-list {
+    gap: var(--space-2);
+  }
+
+  .skill-tag {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    padding: var(--space-12) 0;
+  }
+
+  .skill-category {
+    padding: var(--space-4);
+  }
+
+  .category-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .skill-tag {
+    padding: var(--space-1) var(--space-2);
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
